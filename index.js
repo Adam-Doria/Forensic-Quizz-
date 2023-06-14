@@ -14,7 +14,7 @@ const questions = [
   new Question(
     "Quel élément n'est pas un centre de figure?",
     ["Boucle à droite", "Tente", "Delta", "Composite"],
-    "delta"
+    "Delta"
   ),
   new Question(
     "En France, à partir de combien de point considère-t-on une trace papillaire comme exploitable?",
@@ -25,7 +25,7 @@ const questions = [
     "Le dessin papillaire est réalisé par un ensemble de,",[
       "crêtes et de sillons",
       "bosses et de creux",
-      " de traces et d'empreintes",
+      "de traces et d'empreintes",
       "vallées et creux"
     ],
     "crêtes et de sillons"
@@ -33,7 +33,7 @@ const questions = [
   new Question(
     "Sur quelle zone du corps trouve-t-on aussi des crêtes papillaires ?",
     ["Front", "Pieds", "Oreilles", "Avant-bras"],
-    "Genoux"
+    "Pieds"
   ),
 ];
 
