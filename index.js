@@ -4,12 +4,14 @@ class Question {
     this.choice = choice;
     this.answer = answer;
   }
-  
+
   isCorrectAnswer(userChoice) {
     return userChoice === this.answer;
   }
 }
+const quizzContent = document.getElementById("quiz").innerHTML;
 
+console.log(quizzContent);
 const questions = [
   new Question(
     "Quel élément n'est pas un centre de figure?",
@@ -22,11 +24,12 @@ const questions = [
     "12"
   ),
   new Question(
-    "Le dessin papillaire est réalisé par un ensemble de,",[
+    "Le dessin papillaire est réalisé par un ensemble de,",
+    [
       "crêtes et de sillons",
       "bosses et de creux",
       "de traces et d'empreintes",
-      "vallées et creux"
+      "vallées et creux",
     ],
     "crêtes et de sillons"
   ),
@@ -56,6 +59,11 @@ class Quizz {
   hasEnded() {
     return this.currentQuestionIndex >= this.questions.length;
   }
+  reboot() {
+    this.score = 0;
+    this.questions = questions;
+    this.currentQuestionIndex = 0;
+  }
 }
 
 //affichage
@@ -79,33 +87,45 @@ const display = {
     };
 
     for (let i = 0; i < choices.length; i++) {
-      console.log(i);
       this.elementShown("choice" + i, choices[i]);
-      userchoice("guess" + i, choices[i])
+      userchoice("guess" + i, choices[i]);
     }
   },
-  progress : function() {
-    this.elementShown("progress",`Question ${quizz.currentQuestionIndex+1} sur ${quizz.questions.length} `)
+  progress: function () {
+    this.elementShown(
+      "progress",
+      `Question ${quizz.currentQuestionIndex + 1} sur ${
+        quizz.questions.length
+      } `
+    );
   },
-  endQuizz : function () {
+  endQuizz: function () {
     let endQuizzHTML = `
     <h1>Quizz terminé!</h1>
 <h3>Votre score est de : ${quizz.score} / ${quizz.questions.length}</h3>
-`
-this.elementShown("quiz",endQuizzHTML)
-    
+<button id="restart"> Recommencer </button>
+`;
 
-  }
+    this.elementShown("quiz", endQuizzHTML);
+  },
+  restart: function () {
+    document.getElementById("restart").onclick = () => {
+      quizz.reboot();
+      this.elementShown("quiz", quizzContent);
+      quizzApp();
+    };
+  },
 };
 // logique du jeu
 
 quizzApp = () => {
   if (quizz.hasEnded()) {
     display.endQuizz();
+    display.restart();
   } else {
     display.question();
     display.choices();
-    display.progress()
+    display.progress();
   }
 };
 

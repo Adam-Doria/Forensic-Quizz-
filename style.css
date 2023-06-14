@@ -66,3 +66,18 @@ body #progress {
   font-size: 1.3rem;
   color: #ffa502;
 }
+
+#restart{
+ color: #e7690f;
+ background: #344553 ;
+ border-radius : 10px;
+ margin : 50px;
+ font-size: 2rem;
+ transition: 0.2s;
+ padding: 10px;
+}
+
+#restart:hover{
+  background-color: #415565;
+  transform: scale(1.1);
+}
