@@ -109,11 +109,12 @@ const display = {
     this.elementShown("quiz", endQuizzHTML);
   },
   restart: function () {
-    document.getElementById("restart").onclick = () => {
+    document.getElementById("restart").onclick = ()=> {
       quizz.reboot();
       this.elementShown("quiz", quizzContent);
       quizzApp();
-    };
+      // location.reload() =>cf stackoverflow
+    }
   },
 };
 // logique du jeu
